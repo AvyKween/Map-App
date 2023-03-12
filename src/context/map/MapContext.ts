@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { Map } from 'maplibre-gl';
+import { Map } from 'mapbox-gl';
 
 interface MapContextProps {
     isMapReady: boolean;

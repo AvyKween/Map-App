@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { MapsApp } from './MapsApp';
 
-import maplibregl from 'maplibre-gl';
+import mapboxgl from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');" 
+mapboxgl.accessToken = 'YOUR_API_KEY';
+
 import './index.css';
 
 if ( !navigator.geolocation ) {
