@@ -34,6 +34,6 @@ export const MapView = () => {
     <div 
       ref={ mapDiv }
       className="h-full w-full fixed top-0 left-0"
-    >{userLocation?.join(' ')}</div>
+    ></div>
   )
 }

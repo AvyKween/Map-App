@@ -6,7 +6,6 @@ export const getUserLocation = async(): Promise<[number, number]> => {
 
         navigator.geolocation.getCurrentPosition(
             ({ coords }) => {
-                // We set coords in this order because Mapbox first's parameter is longitude, and latitude, second
                 resolve([ coords.longitude, coords.latitude ])
             },
             ( err ) => {
