@@ -5,8 +5,8 @@ import { LoadingPlaces } from "./"
 
 export const SearchResults = () => {
 
-  const { places, isLoadingPlaces } = useContext(PlacesContext)
-  const { map } = useContext(MapContext)
+  const { places, isLoadingPlaces, userLocation } = useContext(PlacesContext)
+  const { map, getRouteBetweenPoints } = useContext(MapContext)
 
   const [activeId, setActiveId] = useState('')
 
@@ -17,6 +17,14 @@ export const SearchResults = () => {
       zoom: 14,
       center: [ lng, lat ]
     })
+  }
+
+  const getRoute = ( place: Feature ) => {
+    if ( !userLocation ) return
+
+    const [ lng, lat ] = place.center;
+
+    getRouteBetweenPoints( userLocation, [lng, lat] )
   }
 
   if ( isLoadingPlaces ) {
@@ -39,7 +47,10 @@ export const SearchResults = () => {
           >
             <h6 className="font-medium">{ place.text }</h6>
             <p className="text-xs mt-1">{ place.place_name }</p>
-            <button className={ `${ activeId === place.id ? 'text-white border-white hover:bg-[#00aeff]' : 'border-[#00D8FF] hover:bg-[#00D8FF] hover:text-white'} mt-2 z-10 border text-[#00D8FF] font-bold py-2 px-4 rounded text-xs` }>
+            <button 
+              onClick={ () => getRoute( place ) }
+              className={ `${ activeId === place.id ? 'text-white border-white hover:bg-[#00aeff]' : 'border-[#00D8FF] hover:bg-[#00D8FF] hover:text-white'} mt-2 z-10 border text-[#00D8FF] font-bold py-2 px-4 rounded text-xs` }
+            >
               Directions
             </button>
           </li>
