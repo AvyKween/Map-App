@@ -13,6 +13,9 @@ export const getUserLocation = async(): Promise<[number, number]> => {
                 alert('Failed to resolve geolocation');
                 console.log(err);
                 reject()
+            },
+            {
+                enableHighAccuracy: true,
             }
         )
     });
