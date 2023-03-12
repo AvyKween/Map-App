@@ -32,3 +32,5 @@ yarn preview
 To see the preview of our build production go to [http://localhost:4173](http://localhost:4173)
 
 Note: This was made just for testing mapbox api, do not deploy this app since we are keeping secret keys in the client side and even if you are using gitignore and an .env file, is not secure. React environment variables are embedded in the build and are publicly accessible.
+
+Note2: Some functionalities are uncompleted or broken xd
